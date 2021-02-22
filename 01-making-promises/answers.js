@@ -14,6 +14,9 @@ function makePromiseResolveWith3() {
  *
  * @returns {Promise<,"Boo!">}
  */
+function makePromiseRejectWithBoo() {
+  return Promise.reject("Boo!");
+}
 
 /**
  *
