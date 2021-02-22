@@ -26,6 +26,16 @@ function makePromiseRejectWithBoo() {
  * @returns {Promise<undefined, undefined>}
  */
 
+function makePromiseWithConstructor(itShouldResolve) {
+  return new Promise((resolve, reject) => {
+    if (itShouldResolve) {
+      resolve();
+    } else {
+      reject();
+    }
+  });
+}
+
 /**
  *
  * EXERCISE 4
