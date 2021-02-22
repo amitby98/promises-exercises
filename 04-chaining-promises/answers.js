@@ -42,9 +42,9 @@ function makeGetUserByIdWithOrganization(getUserById, getOrganizationById) {
         return undefined;
       }
       return getOrganizationById(user.organizationId).then((organization) => {
-        if (organization === undefined) {
-          return undefined;
-        }
+        // if (organization === undefined) {
+        //   return undefined;
+        // }
         user.organization = organization;
         return user;
       });
