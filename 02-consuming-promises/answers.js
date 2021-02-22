@@ -17,7 +17,15 @@ function waitForPromise(promise, action) {
  * @param {consumer} consumer
  * @param {handler} handler
  */
-function consumePromise(promise, consumer, handler) {}
+function consumePromise(promise, consumer, handler) {
+  promise
+    .then((result) => {
+      consumer(result);
+    })
+    .catch((error) => {
+      handler(error);
+    });
+}
 
 /**
  * @callback thunk
