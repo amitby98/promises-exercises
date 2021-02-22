@@ -37,10 +37,20 @@ function chainTwoAsyncProcesses(firstPromise, slowAsyncProcess) {
  */
 function makeGetUserByIdWithOrganization(getUserById, getOrganizationById) {
   return function getUserByIdWithOrganization(userId) {
-    /* IMPLEMENT ME! */
+    return getUserById(userId).then((user) => {
+      if (user === undefined) {
+        return undefined;
+      }
+      return getOrganizationById(user.organizationId).then((organization) => {
+        if (organization === undefined) {
+          return undefined;
+        }
+        user.organization = organization;
+        return user;
+      });
+    });
   };
 }
-
 module.exports = {
   flatMapPromise,
   chainTwoAsyncProcesses,
