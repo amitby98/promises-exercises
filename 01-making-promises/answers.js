@@ -28,11 +28,7 @@ function makePromiseRejectWithBoo() {
 
 function makePromiseWithConstructor(itShouldResolve) {
   return new Promise((resolve, reject) => {
-    if (itShouldResolve) {
-      resolve();
-    } else {
-      reject();
-    }
+    return itShouldResolve ? resolve() : reject();
   });
 }
 
@@ -45,7 +41,11 @@ function makePromiseWithConstructor(itShouldResolve) {
  * @return {Promise<any>} - A promise that will resolve with the value after delayInMs milliseconds
  */
 function makeDelayPromise(value, delayInMs) {
-  /* Return a promise that resolves with the value after delayInMs */
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(value);
+    }, delayInMs);
+  });
 }
 
 module.exports = {
